@@ -18,8 +18,24 @@
   When you finish the exercise, think about how this solution is different to your last solution.
   What's better about each approach?
 */
+// Previous solution
+// function journeyPlanner(locations, transportMode) {
+//   let availableLocations = [];
+//   for (let place in locations) {
+//     if (locations[place].includes(transportMode)) {
+//       availableLocations.push(place);
+//     }
+//   }
+//   return availableLocations;
+// }
 
-function journeyPlanner(locations, transportMode) {}
+function journeyPlanner(locations, transportMode) {
+  let availableLocations = [];
+  availableLocations = Object.entries(locations)
+    .filter(([location, transport]) => transport.includes(transportMode))
+    .flatMap(([location, transport]) => location)
+  return availableLocations;
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern journey-planner.js`

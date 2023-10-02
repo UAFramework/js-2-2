@@ -27,6 +27,13 @@ Exercise 1:
 */
 // Gather all week item names into this array
 let weeklyGroceriesToBuy = [];
+// Previous solution
+// for (let day in weeklyMealPlan) {
+//   weeklyGroceriesToBuy = weeklyGroceriesToBuy.concat(weeklyMealPlan[day]);
+// }
+// weeklyGroceriesToBuy = weeklyGroceriesToBuy.filter((item, index) => weeklyGroceriesToBuy.indexOf(item) === index);
+let allItems = Object.values(weeklyMealPlan).flat()
+weeklyGroceriesToBuy = allItems.filter((item, index) => allItems.indexOf(item) === index)
 
 /*
 Exercise 2:
@@ -34,7 +41,15 @@ Exercise 2:
 */
 // Gather weekend item names into this array
 let weekendGroceriesToBuy = [];
-
+weekendGroceriesToBuy = Object.entries(weeklyMealPlan)
+.filter(([day, ingredients]) => ["sunday", "saturday"].includes(day.toLowerCase()))
+.flatMap(([day, ingredients]) => ingredients)
+// for (let day in weeklyMealPlan) {
+//   if (day === "saturday" || day === "sunday"){
+//     weekendGroceriesToBuy = weekendGroceriesToBuy.concat(weeklyMealPlan[day]);
+//   }
+// }
+// weekendGroceriesToBuy = weekendGroceriesToBuy.filter((item, index) => weekendGroceriesToBuy.indexOf(item) === index);
 /*
 Exercise 3:
   Loop through your weekly meal plan:
@@ -51,6 +66,9 @@ let numberOfItemsPerWeek = {
   saturday: 0,
   sunday: 0,
 };
+for (let day in weeklyMealPlan) {
+  numberOfItemsPerWeek[day] = weeklyMealPlan[day].length;
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern groceries.js`
