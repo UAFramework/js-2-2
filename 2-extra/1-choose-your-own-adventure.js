@@ -51,15 +51,16 @@ let game = {
     //     currentRoom = null;
     //   }
     // }
-    if (roomName === "hall") {
-      this.currentRoom = rooms.hall;
-    } else if (roomName === "classroom") {
-      this.currentRoom = rooms.classroom;
-    } else if (roomName === "library") {
-      this.currentRoom = rooms.library;
-    } else {
-      this.currentRoom = null;
-    }
+    // if (roomName === "hall") {
+    //   this.currentRoom = rooms.hall;
+    // } else if (roomName === "classroom") {
+    //   this.currentRoom = rooms.classroom;
+    // } else if (roomName === "library") {
+    //   this.currentRoom = rooms.library;
+    // } else {
+    //   this.currentRoom = null;
+    // }
+    this.currentRoom = roomName in rooms ? rooms[roomName] : null;
   },
 
   move: function (direction) {

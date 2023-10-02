@@ -46,15 +46,18 @@ const books = [
 
 // exercise 1
 function logBooks(arrBooks) {
-  let loggedBooks = [];
-  for (let book of arrBooks) {
-    if (book.alreadyRead) {
-      loggedBooks.push(`You've already read "${book.title}" by ${book.author}`);
-    } else {
-      loggedBooks.push(`You still need to read "${book.title}" by ${book.author}`);
-    }
-  }
-  return loggedBooks;
+  // let loggedBooks = [];
+  // for (let book of arrBooks) {
+  //   if (book.alreadyRead) {
+  //     loggedBooks.push(`You've already read "${book.title}" by ${book.author}`);
+  //   } else {
+  //     loggedBooks.push(`You still need to read "${book.title}" by ${book.author}`);
+  //   }
+  // }
+  // return loggedBooks;
+  return arrBooks.map(book => book.alreadyRead 
+    ? `You've already read "${book.title}" by ${book.author}` 
+    : `You still need to read "${book.title}" by ${book.author}`)
 }
 
 /*

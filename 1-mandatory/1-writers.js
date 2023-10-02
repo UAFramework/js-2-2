@@ -64,11 +64,16 @@ Exercise 2:
 */
 
 function logDeadWritersInTheirForties(arr) {
-  arr.forEach(item => {
-    if (item.age >= 40 && item.age <= 49 && item.alive === false) {
-      console.log(`Writer ${item.firstName} ${item.lastName} died at ${item.age} years old.`)
-    }
-  });
+  // Previous solution
+  // arr.forEach(item => {
+  //   if (item.age >= 40 && item.age <= 49 && item.alive === false) {
+  //     console.log(`Writer ${item.firstName} ${item.lastName} died at ${item.age} years old.`)
+  //   }
+  // });
+  arr = writers
+  .filter(writer => writer.age >= 40 && writer.age <= 49 && writer.alive === false)
+  .map(writer => `Writer ${writer.firstName} ${writer.lastName} died at ${writer.age} years old.`);
+  console.log(...arr);
 }
 
 /*
@@ -78,11 +83,17 @@ Exercise 3:
 */
 
 function logAliveWritersInTheirForties(arr) {
-  arr.forEach(item => {
-    if (item.age >= 40 && item.age <= 49 && item.alive === true) {
-      console.log(`Hi, my name is ${item.firstName} ${item.lastName}. I am ${item.age} years old.`)
-    }
-  });
+  // Previous solution
+  // arr.forEach(item => {
+  //   if (item.age >= 40 && item.age <= 49 && item.alive === true) {
+  //     console.log(`Hi, my name is ${item.firstName} ${item.lastName}. I am ${item.age} years old.`)
+  //   }
+  // });
+  arr = writers
+  .filter(writer => writer.age >= 40 && writer.age <= 49 && writer.alive === true)
+  .map(writer => `Hi, my name is ${writer.firstName} ${writer.lastName}. I am ${writer.age} years old.`);
+  console.log(arr.join('\n'));
+  //console.log(...arr) - destruction doesn't work here
 }
 
 /* ======= TESTS - DO NOT MODIFY ===== 

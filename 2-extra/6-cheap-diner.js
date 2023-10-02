@@ -18,16 +18,29 @@ let emptyArray = []
 chosenMeal(emptyArray)
 Should give the answer "Nothing :("
 **/
+//Previous solution
+// function chooseMeal(mealArray) {
+//   let sortedArr = mealArray.sort((a, b) => a.price - b.price);
+//     if (sortedArr.length === 0) {
+//       return "Nothing :("
+//     } else if (sortedArr.length < 3) {
+//       return sortedArr[sortedArr.length - 1].name;
+//     } else {
+//       return sortedArr[1].name;
+//     }
+// }
 
 function chooseMeal(mealArray) {
-  let sortedArr = mealArray.sort((a, b) => a.price - b.price);
-    if (sortedArr.length === 0) {
-      return "Nothing :("
-    } else if (sortedArr.length < 3) {
-      return sortedArr[sortedArr.length - 1].name;
-    } else {
-      return sortedArr[1].name;
-    }
+  // if (mealArray.length === 0) {
+  //   return "Nothing :(";
+  // } else if (mealArray.length === 1) {
+  //   return mealArray[0].name;
+  // } else {
+  //   return mealArray.sort((a, b) => a.price - b.price)[1].name;
+  // }
+  return mealArray.length === 0 ? "Nothing :(" :
+  mealArray.length === 1 ? mealArray[0].name :
+  mealArray.sort((a, b) => a.price - b.price)[1].name;
 }
 
 /* ======= TESTS - DO MODIFY (!!!) =====
