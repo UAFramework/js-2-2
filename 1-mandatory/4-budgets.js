@@ -10,7 +10,19 @@ getBudgets([
 Should give return the answer of 62600.
 **/
 
-function getBudgets(peopleArray) {}
+  function getBudgets(personsArr){
+   return personsArr.reduce(
+   (sum, currentPerson) => sum + currentPerson.budget, 0);
+   
+}
+
+
+// function getBudgets(arr) {
+//   return arr
+//     .map(person => person.budget)
+//     .reduce((acc, person.budget) => acc + person.budget);
+// }
+// console.log(getBudgets())
 
 /* ======= TESTS - DO MODIFY (!!!) =====
 - To run the tests for this exercise, run `npm test -- --testPathPattern budgets.js`
@@ -29,7 +41,7 @@ test("Test 1", () => {
       { name: "Steve", age: 32, budget: 40000 },
       { name: "Martin", age: 16, budget: 2700 },
     ])
-  ).toEqual(65700);
+  ).toBe(65700);
 });
 
 test("Test 2", () => {

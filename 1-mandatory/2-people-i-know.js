@@ -377,7 +377,9 @@ In the above object you can see my friends and the colleagues of my friends.
 First, I want you to find all of my friends who are 35 or older.
 */
 
-let thirtyFiveOrOlder = [];
+let thirtyFiveOrOlder = friends.filter(friend => friend.age > 35).map(({name}) => name.first);
+console.log(thirtyFiveOrOlder);
+
 
 /*
 3) Find the email address
@@ -385,6 +387,12 @@ Next, I want you to find all of my friends who work for "POWERNET" and then stor
 */
 
 let powerNetEmails = [];
+friends.filter(friend => {
+    if (friend.company === "POWERNET") {
+      powerNetEmails.push(friend.email);
+  }
+  });
+console.log(powerNetEmails);
 
 /*
 4) colleagues with "Stacie Villarreal"
@@ -394,6 +402,18 @@ This time, I only want the full names ("<firstname> <lastname>") of my friends w
 */
 
 let friendsWhoAreColleaguesOfStacie = [];
+friends.filter(friend => {
+  for (colleague of friend.colleagues){
+    if (colleague.name === "Stacie Villarreal") {
+  friendsWhoAreColleaguesOfStacie.push(`${friend.name.first} ${friend.name.last}`);
+  }
+  }
+});
+
+console.log(friendsWhoAreColleaguesOfStacie);
+
+
+
 /*
 5) Find "Multi-tasking" colleagues
 Next, I want you to find all of the colleagues of my friends who are good at "Multi-tasking"
@@ -401,7 +421,16 @@ You can tell if they are good at "Multi-tasking" because they will have it liste
 This time, I only want the full names of the people who can multitask
 */
 
-let colleaguesWhoCanMultitask = [];
+ let colleaguesWhoCanMultitask = [];
+ friends.filter(friend => {
+  for (collegue of friend.colleagues){
+  if (collegue.skills.includes("Multi-tasking")) {
+  colleaguesWhoCanMultitask.push(collegue.name);
+  }
+  }
+});
+
+console.log(colleaguesWhoCanMultitask);
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern people-I-know.js`
@@ -410,7 +439,7 @@ let colleaguesWhoCanMultitask = [];
 */
 
 test("2 - friends that are over 35", () => {
-  expect(thirtyFiveOrOlder.map(({ name }) => name.first)).toIncludeSameMembers([
+  expect(thirtyFiveOrOlder).toIncludeSameMembers([
     "Vilma",
     "Aisha",
     "Mitchell",

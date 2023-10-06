@@ -51,8 +51,27 @@ Exercise 1:
   "Hi, my name is {firstName} {lastName}. I am {age} years old, and work as a {occupation}."
 */
 function logAllWriters() {
-  // write your code to log all writers here
+    for (let writer of writers) {
+    console.log(
+      `Hi, my name is ${writer.firstName} ${writer.lastName}. I am ${writer.age} years old, and work as a ${writer.occupation}.`
+    );
+  }
 }
+
+// At first was:
+// writers.map(logAllWriters);
+// for (let i=0; i<writers.length; i++){
+// console.log("Hi, my name is " + writers[i].firstName +" "+ writers[i].lastName +". I am " + writers[i].age + " years old, and work as a " + writers[i].occupation +".");
+// }
+
+// Then was:
+// writers.map(({firstName, lastName, age, occupation})=>{ 
+//   return ("Hi, my name is " + firstName +" "+ lastName +". I am " + age + " years old, and work as a " + occupation +".");
+// });
+     
+
+// write your code to log all writers here
+
 
 /*
 Exercise 2:
@@ -62,8 +81,16 @@ Exercise 2:
 */
 
 function logDeadWritersInTheirForties() {
-  // write your code here
+  for (writer of writers){
+    if(writer.age >= 40 &&
+    writer.age <=50 && 
+    writer.alive === false){
+      console.log("Writer " + writer.firstName + " "+ writer.lastName + " died at " + writer.age + " years old.");
+    }
+  } 
 }
+
+  // write your code here
 
 /*
 Exercise 3:
@@ -72,8 +99,15 @@ Exercise 3:
 */
 
 function logAliveWritersInTheirForties() {
-  // write your code here
+  for (writer of writers){
+    if(writer.age >= 40 &&
+    writer.age <= 49 && 
+    writer.alive === true)
+console.log("Hi, my name is " + writer.firstName + " "+ writer.lastName + " . I am " + writer.age + " years old.");
 }
+// write your code here
+}
+
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern writers.js`
@@ -89,6 +123,7 @@ test("exercise 1", () =>
     "Hi, my name is Bell Hooks. I am 63 years old, and work as a writer.",
     "Hi, my name is Yukiko Motoya. I am 49 years old, and work as a writer.",
   ]));
+  
 
 test("exercise 2", () =>
   expectFunctionToLog(logDeadWritersInTheirForties, [
