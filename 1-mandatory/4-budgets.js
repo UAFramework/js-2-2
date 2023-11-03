@@ -10,11 +10,10 @@ getBudgets([
 Should give return the answer of 62600.
 **/
 
-  function getBudgets(personsArr){
-   return personsArr.reduce(
+  function getBudgets(people) {
+   return people.reduce(
    (sum, currentPerson) => sum + currentPerson.budget, 0);
-   
-}
+  }
 
 
 // function getBudgets(arr) {

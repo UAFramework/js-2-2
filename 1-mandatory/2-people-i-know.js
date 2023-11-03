@@ -387,12 +387,12 @@ Next, I want you to find all of my friends who work for "POWERNET" and then stor
 */
 
 let powerNetEmails = [];
-friends.filter(friend => {
+friends.forEach(friend => {
     if (friend.company === "POWERNET") {
       powerNetEmails.push(friend.email);
   }
   });
-console.log(powerNetEmails);
+
 
 /*
 4) colleagues with "Stacie Villarreal"
@@ -402,17 +402,13 @@ This time, I only want the full names ("<firstname> <lastname>") of my friends w
 */
 
 let friendsWhoAreColleaguesOfStacie = [];
-friends.filter(friend => {
+friends.forEach(friend => {
   for (colleague of friend.colleagues){
     if (colleague.name === "Stacie Villarreal") {
   friendsWhoAreColleaguesOfStacie.push(`${friend.name.first} ${friend.name.last}`);
-  }
+    }
   }
 });
-
-console.log(friendsWhoAreColleaguesOfStacie);
-
-
 
 /*
 5) Find "Multi-tasking" colleagues
@@ -422,15 +418,14 @@ This time, I only want the full names of the people who can multitask
 */
 
  let colleaguesWhoCanMultitask = [];
- friends.filter(friend => {
+ friends.forEach(friend => {
   for (collegue of friend.colleagues){
-  if (collegue.skills.includes("Multi-tasking")) {
+    if (collegue.skills.includes("Multi-tasking")){
   colleaguesWhoCanMultitask.push(collegue.name);
-  }
+    }
   }
 });
 
-console.log(colleaguesWhoCanMultitask);
 
 /* ======= TESTS - DO NOT MODIFY ===== 
 - To run the tests for this exercise, run `npm test -- --testPathPattern people-I-know.js`
