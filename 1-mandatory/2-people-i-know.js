@@ -378,7 +378,7 @@ First, I want you to find all of my friends who are 35 or older.
 */
 
 let thirtyFiveOrOlder = friends.filter(friend => friend.age > 35).map(({name}) => name.first);
-console.log(thirtyFiveOrOlder);
+
 
 
 /*
@@ -417,14 +417,27 @@ You can tell if they are good at "Multi-tasking" because they will have it liste
 This time, I only want the full names of the people who can multitask
 */
 
- let colleaguesWhoCanMultitask = [];
- friends.forEach(friend => {
-  for (collegue of friend.colleagues){
-    if (collegue.skills.includes("Multi-tasking")){
-  colleaguesWhoCanMultitask.push(collegue.name);
-    }
-  }
-});
+// First version
+//  let colleaguesWhoCanMultitask = [];
+//  friends.filter(friend => {
+//   for (collegue of friend.colleagues){
+//     if (collegue.skills.includes("Multi-tasking")){
+//   colleaguesWhoCanMultitask.push(collegue.name);
+//     }
+//   }
+// });
+
+
+// Last version
+let colleaguesWhoCanMultitask = friends.flatMap((friend) =>
+    friend.colleagues.filter((colleague) =>
+      colleague.skills.includes("Multi-tasking")
+    )
+  )
+  .map((colleague) => colleague.name);
+
+
+
 
 
 /* ======= TESTS - DO NOT MODIFY ===== 
