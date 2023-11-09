@@ -16,11 +16,66 @@ In this style of testing it is typical to write out as strings exactly what you 
 without using any variables or any logic like loops, template strings or if statements.
 */
 
-const books = [];
+const books = [
+  {
+  title: "A Redbird Christmas",
+  author: "Fannie Flagg",
+  alreadyRead: true
+},
+  {
+  title: "The Forsyte Saga",
+  author: "John Galsworthy",
+  alreadyRead: true
+},
+  {
+  title: "A Place for Us",
+  author: "Fatima Farheen Mirza",
+  alreadyRead: false
+},
+  {
+  title: "The House of Impossible Beauties",
+  author: "Joseph Cassara",
+  alreadyRead: false
+},
+  {title: "Odour of thought",
+  author: "Robert Sheckley",
+  alreadyRead: true
+}
+];
+
+// class Book{
+//   constructor (title, author, alreadyRead){
+//     this.title = title;
+//     this.author = author;
+//     this.alreadyRead = alreadyRead
+// }
+// }
+// let book1 = new Book("A Redbird Christmas", "Fannie Flagg", true);
+// let book2 = new Book("The Forsyte Saga", "John Galsworthy", true);
+// let book3 = new Book("A Place for Us", "Fatima Farheen Mirza", false);
+// let book4 = new Book("The House of Impossible Beauties", "Joseph Cassara", false);
+// let book5 = new Book("Odour of thought", "Robert Sheckley", true);
+
+// books = [book1, book2, book3, book4, book5];
+
 
 // exercise 1
-function logBooks() {}
+// function logBooks(){
+//   books.map(({title, author})=>{ 
+//     console.log(title + " by " + author);
+//   })
+// }
 
+
+function logBooks(){
+  for(let book of books) {
+    if (book.alreadyRead === true) {
+      console.log ("You've already read " + book.title + " by " + book.author)
+    }
+    else {console.log( "You still need to read "  + book.title + " by " + book.author);
+    }
+    } 
+  }
 /*
 =====
 Exercise 2
@@ -56,13 +111,14 @@ As an example for this exercise, you might do the following steps
 
 test("books are logged", function () {
   expectLogBooksToLog([
-    "The Hobbit by J.R.R. Tolkien",
-    "The Map of Salt and Stars by Jennifer Zeynab Joukhadar",
-    "Dietland by Sarai Walker",
-    "A Place for Us by Fatima Farheen Mirza",
-    "The House of Impossible Beauties by Joseph Cassara",
+    "You've already read A Redbird Christmas by Fannie Flagg",
+    "You've already read The Forsyte Saga by John Galsworthy",
+    "You still need to read A Place for Us by Fatima Farheen Mirza",
+    "You still need to read The House of Impossible Beauties by Joseph Cassara",
+    "You've already read Odour of thought by Robert Sheckley"
   ]);
 });
+
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 /*
